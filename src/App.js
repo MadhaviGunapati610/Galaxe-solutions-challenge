@@ -4,13 +4,19 @@ import FormComponent from './components/FormComponent';
 import './App.css';
 
 class App extends React.Component{
-  
+  state = {
+    name:""
+  }
+handleSubmit=(e)=>{
+  e.preventDefault();
+  this.setState({...this.state.name, name: this.props.updateName})
+}
 render() {
   return (
     <div className="App">
-      <FormComponent changeHandler={(value)=>this.props.changeHandler(value)}/>
+      <FormComponent submitHandler={this.handleSubmit} changeHandler={(value)=>this.props.changeHandler(value)}/>
       <div>
-        <h2>{this.props.updateName}</h2>
+        <h2>{this.state.name}</h2>
       </div>
     </div>
   );
